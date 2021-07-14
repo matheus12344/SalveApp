@@ -1,3 +1,4 @@
+import {Inter_700Bold, Inter_500Medium, Inter_300Light} from '@expo-google-fonts/inter'
 export const theme = {
     colors:{
         blue: "#2675EC",
@@ -11,8 +12,8 @@ export const theme = {
     },
     
     fonts: {
-        title700: 'Ubuntu_700Bold',
-        title500: 'Ubuntu_500Medium',
-        text300: 'Ubuntu_300Light'
+        title700: 'Inter_700Bold',
+        title500: 'Inter_500Medium',
+        text300: 'Inter_300Light'
     }
 }
