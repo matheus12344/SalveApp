@@ -7,13 +7,12 @@ import { Main } from './src/Screens/Main';
 import { signIn } from './src/Screens/signIn';
 import { Profile } from './src/Screens/Profile';
 import { NativeBaseProvider } from 'native-base';
-import Menu from './src/components/Menu';
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Main" component={Main} />
       <Stack.Screen name="Login" component={signIn} />
       <Stack.Screen name="Profile" component={Profile} />
@@ -26,7 +25,6 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <MyStack />
-        <Menu/>
       </NavigationContainer>
     </NativeBaseProvider>
   );

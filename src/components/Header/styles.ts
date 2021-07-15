@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
     title:{
         fontSize: 25,
         color: theme.colors.blue,
-        marginLeft: 20
-    
+        marginLeft: 20,
     }
 });

@@ -7,18 +7,29 @@ import { VStack, HStack, Button, IconButton, Icon, Text, NativeBaseProvider, Cen
 import { MaterialIcons } from '@expo/vector-icons';
 
 import {styles} from './styles';
+import { useFonts } from 'expo-font';
 
 export function Header(){
+  const [loaded] = useFonts({
+    GilroyBold: require('../../assets/fonts/Gilroy-Bold.ttf'),
+    GilroyLight: require('../../assets/fonts/Gilroy-Light.otf')
+});
+
+  
+  if (!loaded) {
+    return null;
+  }
+
     return(
     
     <View>
-        <StatusBar backgroundColor="#3700B3" barStyle="light-content" />
+        <StatusBar backgroundColor="#2675EC" barStyle="light-content" />
 
         <Box safeAreaTop backgroundColor="#6200ee" />
 
         <HStack bg='#FFFFFF' px={1} py={3} justifyContent='space-between' alignItems='center'>
           <HStack space={4} alignItems='center'>
-            <Text color="#2675EC" fontSize={20} fontWeight='bold' style={styles.title}>Hello!!</Text>
+            <Text color="#2675EC"  fontFamily='GilroyBold' style={styles.title}>Obey</Text>
           </HStack>
           <HStack space={2}>
             <IconButton icon={<Icon as={<MaterialIcons name='add' />} size='sm' color="#2675EC" />} />
