@@ -14,13 +14,17 @@ import { Header } from '../../components/Header';
 
 import { styles } from './styles';
 import { Contact } from '../../components/Contact';
+import { Category } from '../../components/Category';
 
 export function Main(){
   return (
-    <View style={{backgroundColor: "#FFFFFF"}}>
+    <View>
       <Header/>
+      <View style={{backgroundColor: '#FFFFFF'}}>
+       <Category/>
+      </View>
       <Contact/>
-
+      
     </View>
   );
 }

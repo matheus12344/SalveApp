@@ -23,13 +23,13 @@ export function Header(){
     return(
     
     <View>
-        <StatusBar backgroundColor="#2675EC" barStyle="light-content" />
+        <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
 
         <Box safeAreaTop backgroundColor="#6200ee" />
 
         <HStack bg='#FFFFFF' px={1} py={3} justifyContent='space-between' alignItems='center'>
           <HStack space={4} alignItems='center'>
-            <Text color="#2675EC"  fontFamily='GilroyBold' style={styles.title}>Obey</Text>
+            <Text color="#2675EC"  fontFamily='GilroyBold' style={styles.title}>Salve</Text>
           </HStack>
           <HStack space={2}>
             <IconButton icon={<Icon as={<MaterialIcons name='add' />} size='sm' color="#2675EC" />} />
