@@ -23,7 +23,9 @@ export function Main(){
       <View style={{backgroundColor: '#FFFFFF'}}>
        <Category/>
       </View>
+      <View style={{backgroundColor: '#FFFFFF'}}>
       <Contact/>
+      </View>
       
     </View>
   );

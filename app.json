@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "HelloApp",
-    "slug": "HelloApp",
+    "name": "Salve",
+    "slug": "Salve",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash2.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#2675EC"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,8 +22,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#2675EC"
+      },
+      "package": "com.skytreft.Salve"
     },
     "web": {
       "favicon": "./assets/favicon.png"

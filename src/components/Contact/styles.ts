@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { height } from 'styled-system';
 import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
@@ -26,13 +27,39 @@ export const styles = StyleSheet.create({
 
   },
   message: {
-    marginTop: 2,
+    marginTop: 10,
     flexDirection: 'column',
     alignContent: 'flex-start',
     marginLeft: 100,
 
     lineHeight: 19,
     letterSpacing: -0.165
+  },
+  notification: {
+    backgroundColor: '#2675EC',
+    alignItems: 'center', 
+    maxHeight: 26,
+    maxWidth: 26,
+    marginLeft: 265,
+    borderRadius: 30,
+    justifyContent: 'center',
+    marginTop: -20,
+  },
+  viewMessage: {
+    alignItems: 'center', 
+    marginLeft: 265,
+    borderRadius: 30,
+    justifyContent: 'center',
+    marginTop: -10,
+  },
+  hour:{
+    alignItems: 'center', 
+    marginLeft: 253,
+    borderRadius: 30,
+    justifyContent: 'center',
+    marginTop: -30,
+  
   }
+  
 
 });

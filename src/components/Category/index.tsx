@@ -39,6 +39,17 @@ export function Category(){
             </View>
         </TouchableOpacity>
     )
+
+    const [loaded] = useFonts({
+        GilroyBold: require('../../assets/fonts/Gilroy-Bold.ttf'),
+        GilroyLight: require('../../assets/fonts/Gilroy-Light.otf'),
+        GilroyRegular: require('../../assets/fonts/Gilroy-Regular.ttf')
+    });
+
+      
+      if (!loaded) {
+        return null;
+      }
   return (
     <View>
         <FlatList
