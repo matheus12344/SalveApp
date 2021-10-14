@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {Dimensions, Animated} from 'react-native';
 
 import { Container, BoxButtonSearch, SearchIcon, Input } from './styles';
 
 export function SearchBar(){
+  const [showMenu, setShowMenu] = useState(false)
     const animation = new Animated.Value(60)
     const {width} = Dimensions.get('window')
     function onSearch(){

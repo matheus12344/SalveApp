@@ -10,7 +10,7 @@ import {styles} from './styles';
 import { useFonts } from 'expo-font';
 import { SearchBar } from '../SearchBar';
 
-export function Header(){
+export function Header(props){
 
 
   const [loaded] = useFonts({

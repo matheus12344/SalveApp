@@ -15,5 +15,14 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
     marginLeft: 5
+  },
+  video: {
+    width: 400,
+    height: 450,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    marginLeft: 5,
+    backgroundColor: 'black'
   }
 });

@@ -1,8 +1,8 @@
 import { useFonts } from 'expo-font';
-import React from 'react';
+import React , {useState} from 'react';
 
 import {
-  View, Image, Text, TouchableOpacity
+  View, Image, Text, TouchableOpacity, FlatList
 } from 'react-native';
 import { fontFamily } from 'styled-system';
 
@@ -18,17 +18,35 @@ import NotView from '../../assets/Icons/-Viewmessage.png'
 
 import { theme } from '../../global/styles/theme';
 import { styles } from './styles';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Users } from '../../constants/ContactList';
+import { useNavigation } from '@react-navigation/core';
+
 
 
 export function Contact(){
-
-    const nome1 = 'Miguel Irmão'
-
-    const nome2 = "Mamãe"
-
-    const nome3 = "Papai"
-    
+    const navigation = useNavigation()
+    const [trending, setTrending] = useState(Users)
+    const renderItem = ({item, index}) => (
+        <View>
+            <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('Chatroom')}>
+                    <View>
+                        <Image source={item.profile} style={styles.avatar}/>
+                        <View style={styles.name}>
+                            <Text style={{ fontSize: 18, color: 'black', fontFamily: 'GilroyBold' }}>{item.name}</Text>  
+                        </View>
+                        <View style={styles.hour}>
+                            <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>{item.hour}</Text>
+                        </View>
+                        <View style={styles.message}>
+                            <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>{item.lastMessage}</Text>
+                        <View style={styles.notification}>
+                            <Text style={{fontFamily: 'GilroyRegular', fontSize: 18, color: '#FFFFFF'}}>{item.notification}</Text>
+                        </View>
+                    </View>
+                    </View>
+            </TouchableOpacity>
+        </View>
+    )
 
     const [loaded] = useFonts({
         GilroyBold: require('../../assets/fonts/Gilroy-Bold.ttf'),
@@ -42,232 +60,14 @@ export function Contact(){
       }
 
   return (
-    <ScrollView>
-    <View style={styles.container}>
-    
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatarMiguel} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>{nome1}</Text>
-                <View style={styles.hour}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>15:00</Text>
-                </View>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Mete o loko fi</Text>
-                <View style={styles.notification}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 18, color: '#FFFFFF'}}>5</Text>
-                </View>
-            </View>
-            
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatarMamae} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>{nome2}</Text>
-                <View style={styles.hour}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>10:00</Text>
-                </View>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.notification}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 18, color: '#FFFFFF'}}>1</Text>
-                </View>
-            </View>
-        </TouchableOpacity>
+    <View>
+        <FlatList
+            data={Users}
+            renderItem={renderItem}
+            keyExtractor={item => `${item.id}`}
 
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatarPapai} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>{nome3}</Text>
-                <View style={styles.hour}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>17:00</Text>
-                </View>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.notification}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 18, color: '#FFFFFF'}}>1</Text>
-                </View>
-            </View>
-        </TouchableOpacity>
+        />
 
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatarAgatha} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 22}}>Agatha minha Vida💙</Text>
-                <View style={styles.hour}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>9:00</Text>
-                </View>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>bom diaaa Vida 🥰🥰🥰</Text>
-                <View style={styles.notification}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 18, color: '#FFFFFF'}}>1</Text>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatarIsaque} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Isaquezin</Text>
-                <View style={styles.hour}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>23:25</Text>
-                </View>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.notification}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 18, color: '#FFFFFF'}}>1</Text>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatar} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Teste</Text>
-                <View style={styles.hour}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>15:00</Text>
-                </View>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.viewMessage}>
-                    <Image source={ViewMsg}/>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatar} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Teste</Text>
-                <View style={styles.hour}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>15:00</Text>
-                </View>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.viewMessage}>
-                    <Image source={NotView}/>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatar} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Teste</Text>
-                <View style={styles.hour}>
-                    <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>15:00</Text>
-                </View>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.viewMessage}>
-                    <Image source={NotView}/>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatar} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Teste</Text>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.viewMessage}>
-                    <Image source={NotView}/>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatar} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Teste</Text>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.viewMessage}>
-                    <Image source={NotView}/>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatar} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Teste</Text>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.viewMessage}>
-                    <Image source={NotView}/>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatar} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Teste</Text>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.viewMessage}>
-                    <Image source={NotView}/>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatar} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Teste</Text>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.viewMessage}>
-                    <Image source={NotView}/>
-                </View>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.chat}>
-            <Image source={avatar} style={styles.avatar}/>
-            <View style={styles.name}>
-                <Text style={{fontFamily: 'GilroyBold', fontSize: 23}}>Teste</Text>
-            </View>
-            
-            <View style={styles.message}>
-                <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>Falaaaaaa Papitoo blz??</Text>
-                <View style={styles.viewMessage}>
-                    <Image source={NotView}/>
-                </View>
-            </View>
-        </TouchableOpacity>
-    
     </View>
-    </ScrollView>
   );
 }

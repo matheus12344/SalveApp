@@ -3,7 +3,7 @@ import React from 'react';
 
 
 import {
-  View, Image, Text
+  View, Image, Text, ScrollView
 } from 'react-native';
 
 
@@ -15,10 +15,11 @@ import { Header } from '../../components/Header';
 import { styles } from './styles';
 import { Contact } from '../../components/Contact';
 import { Category } from '../../components/Category';
+import Drawer from '../../components/Drawer';
 
 export function Main(){
   return (
-    <View>
+    <ScrollView keyboardShouldPersistTaps="never">
       <Header/>
       <View style={{backgroundColor: '#FFFFFF'}}>
        <Category/>
@@ -27,6 +28,6 @@ export function Main(){
       <Contact/>
       </View>
       
-    </View>
+    </ScrollView>
   );
 }

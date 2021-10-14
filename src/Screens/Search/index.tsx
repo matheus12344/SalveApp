@@ -1,19 +1,21 @@
 import React from 'react';
 
 import {
-  View,
+  ScrollView,
   Text
 } from 'react-native';
 import { SearchBox } from './components/SearchBox';
 import { Card } from './components/Card';
 
 import { styles } from './styles';
+import { People } from './components/People';
 
 export function Search(){
   return (
-    <View >
+    <ScrollView keyboardShouldPersistTaps="never">
         <SearchBox/>
         <Card/>
-    </View>
+        <People/>
+    </ScrollView>
   );
 }

@@ -2,7 +2,6 @@ import avatar from '../assets/avatar.png';
 import avatarMamae from '../assets/Contact/mamãe.png';
 import avatarPapai from '../assets/Contact/papai.png';
 import avatarMiguel from '../assets/Contact/miguel.png';
-import mayara from '../assets/mayara.png';
 import avatarAgatha from '../assets/Contact/agatha.png';
 import avatarIsaque from '../assets/Contact/isaque.png';
 
@@ -52,5 +51,45 @@ export const Users = [
         profile: avatarIsaque
     },
 
-    
+    {
+        id:'6',
+        name: 'Teste',
+        lastMessage: 'OI',
+        hour: '15:30',
+        notification: 2,
+        profile: avatar
+    },
+    {
+        id:'7',
+        name: 'Teste',
+        lastMessage: 'OI',
+        hour: '15:30',
+        notification: 2,
+        profile: avatar
+    },
+    {
+        id:'8',
+        name: 'Teste',
+        lastMessage: 'OI',
+        hour: '15:30',
+        notification: 2,
+        profile: avatar
+    },
+    {
+        id:'9',
+        name: 'Teste',
+        lastMessage: 'OI',
+        hour: '15:30',
+        notification: 2,
+        profile: avatar
+    },
+
+    {
+        id: '10',
+        name: '',
+        lastMessage: '',
+        hour: '',
+        notification: '',
+        profile: ''
+    }
 ]

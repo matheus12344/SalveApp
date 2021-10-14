@@ -13,7 +13,7 @@ import { styles } from './styles';
 
 export function Stories(){
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} keyboardShouldPersistTaps="never">
         <Header/>
         <View style={{backgroundColor: '#FFFFFF'}}>
           <Status/>

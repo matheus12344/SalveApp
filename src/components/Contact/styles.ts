@@ -5,9 +5,10 @@ import { theme } from '../../global/styles/theme';
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF'
+
   },
   avatar: {
-    marginTop: 32,
+    marginTop: 38,
     width: 82,
     borderRadius: 25,
     marginLeft: 10,
@@ -54,7 +55,7 @@ export const styles = StyleSheet.create({
   },
   hour:{
     alignItems: 'center', 
-    marginLeft: 253,
+    marginLeft: 340,
     borderRadius: 30,
     justifyContent: 'center',
     marginTop: -30,

@@ -7,8 +7,12 @@ import {
   ScrollView
 } from 'react-native';
 import { useFonts } from 'expo-font';
+import YoutubePlayer from 'react-native-youtube-iframe'
+
 
 import avatar from '../../assets/avatar.png'
+import playstation from '../../assets/playstation.png'
+import kanyewest from '../../assets/kanyewest.png'
 import avatarMamae from '../../assets/Contact/mamãe.png'
 import avatarPapai from '../../assets/Contact/papai.png'
 import avatarMiguel from '../../assets/Contact/miguel.png'
@@ -29,6 +33,7 @@ import {
   Fontisto, 
   MaterialCommunityIcons 
 } from '@expo/vector-icons';
+import { VideoPlayer } from '../../Screens/Search/components/VideoPlayer';
 
 export function Post(){
     const [loaded] = useFonts({
@@ -81,17 +86,23 @@ export function Post(){
       </View>
 
       <View style={{flexDirection: 'row'}}>
-        <Image source={avatar} style={styles.profile}/>
-        <Text style={{fontFamily: 'GilroyBold', fontSize: 20, marginTop: 20, marginLeft: 5}}>Teste</Text>
+        <Image source={kanyewest} style={styles.profile}/>
+        <Text style={{fontFamily: 'GilroyBold', fontSize: 20, marginTop: 20, marginLeft: 5}}>Kanye West</Text>
 
         <TouchableOpacity>
-          <Feather name="more-horizontal" size={30} color="black"  style={{marginLeft: 255, marginTop: 20}}/>
+          <Feather name="more-horizontal" size={30} color="black"  style={{marginLeft: 190, marginTop: 20}}/>
         </TouchableOpacity>        
       </View>
 
-      <View>
-        <Image source={beach} style={styles.photo}/>
-      </View>
+      <View style={styles.video}>
+                <YoutubePlayer
+                    height={600}
+                    width={450}
+                    play={true}
+                    videoId={'sDJBhQv85K0'}
+                    webViewStyle={{marginTop: 200, marginLeft: 35, marginRight: 30}}
+                /> 
+       </View>
 
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity>
@@ -117,16 +128,16 @@ export function Post(){
       </View>
 
       <View style={{flexDirection: 'row'}}>
-        <Image source={avatar} style={styles.profile}/>
-        <Text style={{fontFamily: 'GilroyBold', fontSize: 20, marginTop: 20, marginLeft: 5}}>Teste</Text>
+        <Image source={playstation} style={styles.profile}/>
+        <Text style={{fontFamily: 'GilroyBold', fontSize: 20, marginTop: 20, marginLeft: 5}}>Playstation</Text>
 
         <TouchableOpacity>
-          <Feather name="more-horizontal" size={30} color="black"  style={{marginLeft: 255, marginTop: 20}}/>
+          <Feather name="more-horizontal" size={30} color="black"  style={{marginLeft: 195, marginTop: 20}}/>
         </TouchableOpacity>        
       </View>
 
-      <View>
-        <Image source={beach} style={styles.photo}/>
+      <View style={styles.photo}>
+        <VideoPlayer />
       </View>
 
       <View style={{flexDirection: 'row'}}>
@@ -148,8 +159,8 @@ export function Post(){
       </View>
 
       <View style={{flexDirection: 'row'}}>
-        <Text style={{fontFamily: 'GilroySemiBold', fontSize: 15, marginLeft: 5}}>Teste: </Text>
-        <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, marginLeft: 7, marginTop: 1}}>Prainha né pai</Text>
+        <Text style={{fontFamily: 'GilroySemiBold', fontSize: 15, marginLeft: 5}}>Playstation: </Text>
+        <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, marginLeft: 7, marginTop: 1}}>Trailer de God of War: Ragnarok!!!</Text>
       </View>
 
       <View style={{flexDirection: 'row'}}>
