@@ -17,6 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 
 export function Chatroom({navigation}){
     const [loaded] = useFonts({
@@ -33,11 +34,15 @@ export function Chatroom({navigation}){
 
   return (
     <SafeAreaView style={{backgroundColor: '#FFFFFF'}}>
-        <View style={{marginLeft: 20, marginTop: 60, flexDirection: 'row'}}>
+        <View style={{marginLeft: 20, marginTop: 60, flexDirection: 'row', height: 80}}>
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                 <Image source={back} style={{marginTop: 23}}/>
             </TouchableOpacity>
-            <Image source={avatar} style={{height: 64, width: 64, borderRadius: 20, marginLeft: 20}}/>
+
+            <TouchableOpacity>
+                <Image source={avatar} style={{height: 64, width: 64, borderRadius: 20, marginLeft: 20}}/>
+            </TouchableOpacity>
+            
             <Text style={{marginLeft: 25, fontFamily: 'GilroyBold', fontSize: 20, color:'black', marginTop: 10}}>Teste</Text>
             <Text style={{marginTop: 40, marginLeft: -55, color: '#2675EC', fontFamily: 'GilroySemiBold', fontSize: 16}}>Online</Text>
             <TouchableOpacity>
@@ -199,7 +204,7 @@ export function Chatroom({navigation}){
                 <MaterialIcons name="emoji-emotions" size={30} color="#2675EC" style={{marginLeft: 20, marginTop: 20}}/>
             </TouchableOpacity>
             <TouchableOpacity >
-                <MaterialCommunityIcons name="camera" size={30} color="#2675EC" style={{marginLeft: 20, marginTop: 20}}/>
+                <MaterialCommunityIcons name="camera" size={30} color="#2675EC" style={{marginLeft: 20, marginTop: 20}} onPress={() => navigation.navigate('Camera')}/>
             </TouchableOpacity>
            
         </View>

@@ -16,7 +16,8 @@ export const CardData = [
         id: "3",
         name: "Store",
         color: "#FFFFFF",
-        icon: "store-outline"
+        icon: "store-outline",
+        url: "Store",
     },
     {
         id: "4",
@@ -28,7 +29,8 @@ export const CardData = [
         id: "5",
         name: "For You",
         color: "#FFFFFF",
-        icon: "tooltip-image"
+        icon: "tooltip-image",
+        url: "ForYou",
     },
     {
         id: "6",

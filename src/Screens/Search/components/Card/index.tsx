@@ -11,9 +11,11 @@ import { CardData } from '../../../../constants/CardData';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { styles } from './styles';
+import { useNavigation } from '@react-navigation/core';
+
 
 export function Card(){
-  
+    const navigation = useNavigation()
     const [trending, setTrending] = useState(CardData)
     const renderItem = ({item, index}) => (
         <TouchableOpacity
@@ -31,6 +33,7 @@ export function Card(){
                 justifyContent: 'center',
                 marginEnd: 26
             }}
+            onPress={()=> navigation.navigate(item.url) }
         >
             <View style={{flexDirection: 'row',}}>
                 <View style={{marginLeft: 25, alignItems: 'center'}}>

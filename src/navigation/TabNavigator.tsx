@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { MainStackNavigator, ContactStackNavigator } from "./StackNavigator";
+import { MainStackNavigator, ContactStackNavigator, LoginNavigator } from "./StackNavigator";
 
 
 import {AntDesign, MaterialIcons, Ionicons} from '@expo/vector-icons' //Icones
@@ -11,6 +11,7 @@ import Camera2 from "../Screens/camera";
 import { Search } from "../Screens/Search"; //telas
 import { Stories } from "../Screens/Stories";  
 import { Music } from "../Screens/Music";
+import { Login } from "../Screens/signIn/login";
 
 const Tab = createBottomTabNavigator();
 
@@ -41,6 +42,8 @@ const BottomTabNavigator = () => {
           showLabel: false,
         }}
       >
+        
+
         <Tab.Screen name="Home" component={MainStackNavigator} />
         <Tab.Screen name="Pesquisar" component={Search}/>
         <Tab.Screen 
@@ -56,6 +59,7 @@ const BottomTabNavigator = () => {
         />
         <Tab.Screen name="Stories" component={Stories}/>
         <Tab.Screen name="Músicas" component={Music}/>
+        
       </Tab.Navigator>
   );
 };

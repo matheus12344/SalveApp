@@ -6,10 +6,12 @@ import {
   View
 } from 'react-native';
 
+
 import { styles } from './styles';
 import { Entypo } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
+import { useNavigation } from '@react-navigation/core';
 
 
 export function MusicPlayer(){
@@ -23,8 +25,9 @@ export function MusicPlayer(){
   if (!loaded) {
     return null;
   }
+  const navigation = useNavigation()
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MusicRoom')}>
        <TouchableOpacity >
         <Foundation name="heart" size={30} color="white" style={styles.savebutton}/>
       </TouchableOpacity>
