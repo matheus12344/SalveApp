@@ -35,4 +35,4 @@ Com a chegada do salve, nada disso poderá acontecer, pois como tudo o que você
   
   ### *Criado por Matheus Henrique*
 
-[Link for figma prototy](<https://www.figma.com/file/X4xMPjTqUqKdkmNtHPZp5F/Telegram-App-UI-Kit-(Community)?node-id=2%3A2>)
+[Link for Canva Presentation](<https://www.canva.com/design/DAFcYGpejLc/rp8sSBKHYnmT9bfLd07gLA/edit?utm_content=DAFcYGpejLc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>)
