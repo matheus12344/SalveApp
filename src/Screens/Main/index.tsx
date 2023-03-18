@@ -3,7 +3,7 @@ import React from 'react';
 
 
 import {
-  View, Image, Text, ScrollView
+  View, Image, Text, ScrollView, FlatList
 } from 'react-native';
 
 
@@ -19,15 +19,18 @@ import Drawer from '../../components/Drawer';
 
 export function Main(){
   return (
-    <ScrollView keyboardShouldPersistTaps="never">
-      <Header/>
-      <View style={{backgroundColor: '#FFFFFF'}}>
-       <Category/>
-      </View>
-      <View style={{backgroundColor: '#FFFFFF'}}>
-      <Contact/>
-      </View>
-      
-    </ScrollView>
+    <FlatList
+      ListHeaderComponent={()=>(
+        <>
+          <Header/>
+          <View style={{backgroundColor: '#FFFFFF'}}>
+          <Category/>
+          </View>
+          <View style={{backgroundColor: '#FFFFFF'}}>
+          <Contact/>
+          </View>
+        </>
+      )}
+    />
   );
 }

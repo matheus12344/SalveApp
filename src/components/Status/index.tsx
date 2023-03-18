@@ -1,13 +1,10 @@
 import React from "react"
-import { Avatar, HStack, Center, NativeBaseProvider } from "native-base"
 import { Image, TouchableOpacity, View } from "react-native"
 
-import avatar from '../../assets/avatar.png'
 import avatarMamae from '../../assets/Contact/mamãe.png'
 import avatarPapai from '../../assets/Contact/papai.png'
 import avatarMiguel from '../../assets/Contact/miguel.png'
 import mayara from '../../assets/Contact/Mayara.png'
-import avatarAgatha from '../../assets/Contact/agatha.png'
 import avatarIsaque from '../../assets/Contact/isaque.png'
 import imagineDragons from '../../assets/Users/imagineDragons.png'
 import kemuel from '../../assets/Users/kemuel.png'
@@ -36,12 +33,6 @@ export default function Status(){
         
         <TouchableOpacity style={{height: 100}}>
           <Image source={avatarPapai} style={styles.avatarImage}/>
-          <View style={styles.StatusOn}/>
-        </TouchableOpacity>
-
-
-        <TouchableOpacity style={{height: 100}}>
-          <Image source={avatarAgatha} style={styles.avatarImage}/>
           <View style={styles.StatusOn}/>
         </TouchableOpacity>
 

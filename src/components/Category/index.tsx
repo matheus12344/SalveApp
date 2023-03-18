@@ -29,12 +29,12 @@ export function Category(){
                 height: 50,
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginEnd: 25
+                marginEnd: 25,
             }}
         >
-            <View style={{flexDirection: 'row',}}>
+            <View style={{flexDirection: 'row', marginTop:22}}>
                 <View style={{marginLeft: 8, justifyContent: 'center', alignItems: 'center'}}>
-                   <Text style={{ fontSize: 18, color: '#FFFFFF', fontFamily: 'GilroyBold' }}>{item.currency}</Text>
+                   <Text style={{ fontSize: 18, color: '#ffffff', fontFamily: 'GilroyBold', marginTop:-25}}>{item.currency}</Text>
                 </View>
             </View>
         </TouchableOpacity>

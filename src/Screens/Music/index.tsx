@@ -4,7 +4,8 @@ import React from 'react';
 import {
   View,
   Text,
-  ScrollView
+  ScrollView,
+  FlatList
 } from 'react-native';
 import { HeaderMusic } from '../../components/HeaderMusic';
 import { Playlist } from '../../components/Playlists';
@@ -30,14 +31,20 @@ export function Music(){
   return (
     <>
       
-      <ScrollView style={{backgroundColor: '#FFFFFF'}} showsVerticalScrollIndicator={false}>
-        <HeaderMusic/>
-        <Text style={{marginLeft: 20,fontSize: 23,fontFamily: 'GilroyBold'}}>Boa Noite</Text>
-        <Playlist/>
-        <SearchBox/>
-        <Podcasts/>
-        <CategoryMusic/>
-      </ScrollView>
+      <FlatList 
+        style={{backgroundColor: '#FFFFFF'}} 
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={()=>(
+          <>
+            <HeaderMusic/>
+            <Text style={{marginLeft: 20,fontSize: 23,fontFamily: 'GilroyBold'}}>Boa Noite</Text>
+            <Playlist/>
+            <SearchBox/>
+            <Podcasts/>
+            <CategoryMusic/>
+          </>
+        )} 
+      />
       <MusicPlayer/>
     </>
   );

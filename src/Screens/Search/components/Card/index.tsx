@@ -36,9 +36,9 @@ export function Card(){
             onPress={()=> navigation.navigate(item.url) }
         >
             <View style={{flexDirection: 'row',}}>
-                <View style={{marginLeft: 25, alignItems: 'center'}}>
-                    <MaterialCommunityIcons name={item.icon} size={24} color="black" style={{marginLeft: -90}}/>
-                   <Text style={{ fontSize: 15, color: 'black', fontFamily: 'GilroyBold', marginTop: -23}}>{item.name}</Text>
+                <View style={{marginLeft: 25, alignItems: 'center', justifyContent:'center', marginTop:10}}>
+                    <MaterialCommunityIcons name={item.icon} size={19} color="black" style={{marginLeft: -90, marginTop:-18}}/>
+                   <Text style={{ fontSize: 15, color: 'black', fontFamily: 'GilroyBold', marginTop: -18}}>{item.name}</Text>
                 </View>
             </View>
         </TouchableOpacity>

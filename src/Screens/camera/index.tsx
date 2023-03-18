@@ -22,6 +22,7 @@ export default function Camera2() {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [capturedPhoto, setCapturedPhoto] = useState(null);
   const [open, setOpen] = useState(false);
+  const [zoom, setZoom] = useState(0);
  
   useEffect(() => {
     (async () => {
@@ -102,7 +103,7 @@ export default function Camera2() {
             <TouchableOpacity
               style={{
                 top: 79,
-                right: 150,
+                right: 144,
                 backgroundColor: '#2675EC',
                 height: 80,
                 width: 80,

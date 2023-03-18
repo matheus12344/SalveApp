@@ -33,7 +33,7 @@ export function CategoryMusic(){
             }}
         >
             <View style={{flexGrow: 1,}}>
-                <View style={{marginLeft: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{marginLeft: 1, justifyContent: 'center', alignItems: 'center', marginTop:-11}}>
                    <Text style={{ fontSize: 18, color: '#FFFFFF', fontFamily: 'GilroyBold' }}>{item.name}</Text>
                 </View>
             </View>

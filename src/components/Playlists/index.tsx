@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import React, { useState } from 'react';
 
@@ -15,6 +16,7 @@ import { styles } from './styles';
 export function Playlist(){
   
     const [trending, setTrending] = useState(playlistData)
+    const navigation = useNavigation()
     const renderItem = ({item, index}) => (
         <TouchableOpacity
             style={{
@@ -31,6 +33,7 @@ export function Playlist(){
                 justifyContent: 'center',
                 marginEnd: 25
             }}
+            onPress={() => navigation.navigate('PlaylistRoom')}
         >
             <View style={{flexDirection: 'row',}}>
                 <View style={{marginLeft: 1, justifyContent: 'center', alignItems: 'center'}}>

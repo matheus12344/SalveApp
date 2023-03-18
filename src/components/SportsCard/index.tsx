@@ -9,46 +9,41 @@ import {
   View
 } from 'react-native';
 import { justifyContent } from 'styled-system';
-import { CategoryListData, ItensStore } from '../../constants/CategoryListData';
-import dummyData from '../../constants/dummy';
+import {SportsData} from '../../constants/SportsData'
+
 
 import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-export function ItemStore(){
+export function SportsCard(){
   
-    const [trending, setTrending] = useState(ItensStore)
+    const [trending, setTrending] = useState(SportsData)
     const navigation = useNavigation()
     const renderItem = ({item, index}) => (
-        <TouchableOpacity
+        <View
             style={{
                 marginTop: 25,
-                width: 220,
+                width: 150,
                 paddingVertical: 24,
                 paddingHorizontal: 24,
                 marginLeft: index == 0 ? 24 : 0,
                 marginRight: 12,
                 borderRadius: 10,
-                backgroundColor: '#d0d0d0',
-                height: 200,
+                backgroundColor: 'white',
+                height: 130,
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginEnd: 25
             }}
-            onPress={() => navigation.navigate('ItemDetails')}
         >
             <View style={{flexDirection: 'row',}}>
                 <View>     
-                   <Image source={item.image} style={{width: 200, height: 100, marginLeft: 1, borderRadius: 5}}/> 
-                   <Text style={{ fontSize: 17, color: 'black', fontFamily: 'GilroySemiBold' }}>{item.name}</Text>
-                   <Text style={{ fontSize: 15, color: '#363636', fontFamily: 'GilroyBold', marginTop: 10 }}>{item.price}</Text>
-                   <View style={{width: 30, height: 29, backgroundColor: '#2675EC', alignContent: 'center', justifyContent: 'center', borderRadius: 8, marginLeft: 180, marginTop:-20}}>
-                     <Ionicons name="md-add-sharp" size={25} color="white" style={{marginLeft: 3}}/>
-                   </View>
+                   <Text style={{ fontSize: 35, color: '#2675EC', fontFamily: 'GilroyBold', marginLeft: 5 }}>{item.value}</Text>
+                   <Text style={{ fontSize: 15, color: '#b6b5b5', fontFamily: 'GilroySemiBold', marginTop: 10 }}>{item.name}</Text>
                 </View>
             </View>
-        </TouchableOpacity>
+        </View>
     )
 
     const [loaded] = useFonts({

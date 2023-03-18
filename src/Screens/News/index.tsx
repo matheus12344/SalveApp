@@ -7,10 +7,10 @@ import {
 
 import { styles } from './styles';
 
-export function ContactView(){
+export function News(){
   return (
     <View>
-        <Text>Oi</Text>
+        <Text>News</Text>
     </View>
   );
 }

@@ -1,41 +1,31 @@
 export const CardData = [
+    
     {
         id: "1",
-        name: "Reels",
-        color: "#FFFFFF",
-        icon: "video-image"
-        
-    },
-    {
-        id: "2",
-        name: "IGTV",
-        color: "#FFFFFF",
-        icon: "youtube-tv"
-    },
-    {
-        id: "3",
         name: "Store",
         color: "#FFFFFF",
         icon: "store-outline",
         url: "Store",
     },
     {
-        id: "4",
-        name: "Games",
+        id: "2",
+        name: "Sports",
         color: "#FFFFFF",
-        icon: "gamepad-variant"
+        icon: "basketball",
+        url: "Sports",
     },
     {
-        id: "5",
+        id: "3",
         name: "For You",
         color: "#FFFFFF",
         icon: "tooltip-image",
         url: "ForYou",
     },
     {
-        id: "6",
-        name: "Users",
+        id: "4",
+        name: "News",
         color: "#FFFFFF",
-        icon: "account-box-multiple-outline"
+        icon: "account-box-multiple-outline",
+        url: 'Users'
     },
 ]

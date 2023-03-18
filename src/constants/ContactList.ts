@@ -34,15 +34,6 @@ export const Users = [
     },
 
     {
-        id: '4',
-        name: 'Agatha minha Vida💙',
-        lastMessage: 'Bom diaa amoor 🥰💙',
-        hour: '7:50',
-        notification: 3,
-        profile: avatarAgatha
-    },
-
-    {
         id: '5',
         name: 'Isaquezin',
         lastMessage: 'Aoobaa',

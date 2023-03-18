@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
   },
   camera: {
     height: "100%",
-    width: "100%",
+    width: "150%",
+    marginLeft:-100
   },
   contentButtons: {
     flex: 1,
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
   buttonCamera: {
     position: "absolute",
     bottom: 50,
-    right: 150,
+    right: 250,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#2675EC",
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
   buttonFlip: {
     position: "absolute",
     bottom: 50,
-    left: 30,
+    left: 130,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     borderRadius: 50,
+
     
   },
   contentModal: {
