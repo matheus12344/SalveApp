@@ -1,5 +1,5 @@
 # Salve App✌✌
-V 1.4.0
+Versão 1.4.0
 
 ## Um app multifuncional de conversas 
 
