@@ -12,6 +12,7 @@ import { Store } from "../Screens/Store";
 import { ItemDetails } from "../Screens/ItemDetails";
 import { News, Users } from "../Screens/News";
 import { PlaylistRoom } from "../Screens/PlaylistRoom";
+import { Settings } from "../Screens/Settings";
 
 
 
@@ -59,6 +60,7 @@ const MainStackNavigator = () => {
       <Stack.Screen name="Sports" component={Sports} />
       <Stack.Screen name="Users" component={News} />
       <Stack.Screen name="PlaylistRoom" component={PlaylistRoom} />
+      <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
   );
 }

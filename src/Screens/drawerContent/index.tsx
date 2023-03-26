@@ -23,6 +23,8 @@ import Invite from '../../assets/Icons/Invite_friends.png'
 import Settings from '../../assets/Icons/Settings.png'
 import Back from '../../assets/Icons/back.png'
 import { calls } from '../calls';
+import ProgressBar from './components/ProgressBar';
+import App from './components/ProgressBar';
 
 
 
@@ -76,6 +78,16 @@ export function DrawerContent(props){
             <Image source={FAQ} style={{marginTop: 10, marginLeft: 10}}/>
             <Text style={{marginLeft: 50, marginTop: -25, fontFamily: 'GilroyBold', fontSize: 20, color: '#2675EC'}}>Salve FAQ</Text>
         </TouchableOpacity>
+
+        <View>
+            <Text style={{marginLeft: 10, marginTop: 40, fontFamily: 'GilroyBold', fontSize: 20, color: 'gray'}}>15% Utilizado do sua Nuvem</Text>
+            <ProgressBar/> 
+            <View style={{flexDirection:'row',marginTop: 25}}>
+                <Text style={{marginLeft: 20,fontFamily: 'GilroySemiBold', fontSize: 12, color: 'gray'}}>0GB</Text>
+                <Text style={{marginLeft: 165,fontFamily: 'GilroySemiBold', fontSize: 12, color: 'gray'}}>100GB</Text>
+            </View>
+            
+        </View>
     </View>
     </>
   );

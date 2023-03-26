@@ -19,7 +19,7 @@ export function CategoryStore(){
     const renderItem = ({item, index}) => (
         <TouchableOpacity
             style={{
-                marginTop: 25,
+                marginTop: 10,
                 width: 100,
                 paddingVertical: 24,
                 paddingHorizontal: 24,
@@ -34,7 +34,7 @@ export function CategoryStore(){
             }}
         >
             <View style={{flexDirection: 'row',}}>
-                <View style={{marginLeft: 3, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{marginLeft: 3, justifyContent: 'center', alignItems: 'center', marginTop:-20,}}>
                    <Text style={{ fontSize: 15, color: 'black', fontFamily: 'GilroyBold' }}>{item.name}</Text>
                 </View>
             </View>
