@@ -2,8 +2,14 @@ import avatar from '../assets/avatar.png';
 import avatarMamae from '../assets/Contact/mamãe.png';
 import avatarPapai from '../assets/Contact/papai.png';
 import avatarMiguel from '../assets/Contact/miguel.png';
-import avatarAgatha from '../assets/Contact/agatha.png';
+import avatarMayara from '../assets/Contact/Mayara.png';
 import avatarIsaque from '../assets/Contact/isaque.png';
+import avatarCaua from '../assets/Contact/Cauã.png';
+import avatarCamz from '../assets/Contact/Camz.png';
+import avatarAlberth from '../assets/Contact/Alberth.png';
+import avatarHenrique from '../assets/Contact/henrique.png';
+
+
 
 export const Users = [
     {
@@ -44,39 +50,47 @@ export const Users = [
 
     {
         id:'6',
-        name: 'Teste',
+        name: 'Mayara Best 💙',
         lastMessage: 'OI',
         hour: '15:30',
         notification: 2,
-        profile: avatar
+        profile: avatarMayara
     },
     {
         id:'7',
-        name: 'Teste',
+        name: 'Cauã 💪',
         lastMessage: 'OI',
         hour: '15:30',
         notification: 2,
-        profile: avatar
+        profile: avatarCaua
     },
     {
         id:'8',
-        name: 'Teste',
+        name: 'Camz 🦇',
         lastMessage: 'OI',
         hour: '15:30',
         notification: 2,
-        profile: avatar
+        profile: avatarCamz
     },
     {
         id:'9',
-        name: 'Teste',
+        name: 'Alberth Rockstar 😈',
         lastMessage: 'OI',
         hour: '15:30',
         notification: 2,
-        profile: avatar
+        profile: avatarAlberth
+    },
+    {
+        id:'10',
+        name: 'Henrique Sandrovisk',
+        lastMessage: 'OI',
+        hour: '15:30',
+        notification: 2,
+        profile: avatarHenrique
     },
 
     {
-        id: '10',
+        id: '11',
         name: '',
         lastMessage: '',
         hour: '',

@@ -28,7 +28,10 @@ export function Contact(){
     const [trending, setTrending] = useState(Users)
     const renderItem = ({item, index}) => (
         <View>
-            <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('Chatroom')}>
+            <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('Chatroom', {
+                name: item.name,
+                image: item.profile
+            })}>
                     <View>
                         <Image source={item.profile} style={styles.avatar}/>
                         <View style={styles.name}>

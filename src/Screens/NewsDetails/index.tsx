@@ -7,10 +7,10 @@ import {
 
 import { styles } from './styles';
 
-export function Settings(){
+export function NewsDetails(){
   return (
     <View>
-        <Text>Settings</Text>
+        <Text>Detalhes</Text>
     </View>
   );
 }

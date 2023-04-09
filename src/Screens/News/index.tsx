@@ -3,15 +3,18 @@ import React from 'react';
 
 import {
   Image,
+    Linking,
     ScrollView,
     Text,
   TouchableOpacity,
   View
 } from 'react-native';
 
-import { styles } from './styles';
 import { useFonts } from 'expo-font';
-import immunization from '../../assets/immunization.jpg'
+import aviaonews from '../../assets/aviaonews.png'
+import { ItemNews } from './components/ItemNews';
+import { Card } from './components/Card';
+import { Feather } from '@expo/vector-icons';
 
 export function News(){
   const [loaded] = useFonts({
@@ -21,49 +24,37 @@ export function News(){
     GilroySemiBold: require('../../assets/fonts/Gilroy-SemiBold.ttf')
 });
   return (
-    <View style={{backgroundColor:'#ffffff'}}>
-        <View style={{
-          backgroundColor:'blue',
-          height:400,
-          borderBottomLeftRadius:40,
-          borderBottomRightRadius:40,
-        }}>
-          <Image source={immunization} style={{height:400, width:'100%', opacity:0.8,borderBottomLeftRadius:40,borderBottomRightRadius:40,}}/>
+    <ScrollView style={{backgroundColor:'#ffffff'}}>
+      <View style={{marginTop: 20, marginLeft: 10, flexDirection:'row'}}>
+        <Profile/>
+        <TouchableOpacity style={{marginLeft: 280, marginTop:10}}>
+          <Feather name="menu" size={30} color="#2675EC" />
+        </TouchableOpacity>
+      </View>
 
-          <View style={{
-            marginTop:-380,
-            marginLeft:15
-          }}>
-            <Profile/>
-          </View>
+      <Card/>
 
-          <View style={{
-            backgroundColor: `rgba(136, 136, 143, 0.4)`,
-            height: 35,
-            width:155,
-            marginLeft: 40,
-            justifyContent: 'center',
-            alignItems:'center',
-            borderRadius:20,
-            marginTop:90,
-          }}>
+        <View style={{backgroundColor:'blue',height:450,width:'95%',borderBottomLeftRadius:40,borderRadius:40, alignSelf:'center', marginTop: 20}}>
+          <Image source={aviaonews} style={{height:450, width:'100%',borderRadius:40}}/>
+          
+
+          <View style={{backgroundColor: `rgba(72, 72, 73, 0.4)`,height: 35,width:155,marginLeft: 40,justifyContent: 'center',alignItems:'center',borderRadius:20,marginTop:-250,}}>
             <Text style={{fontFamily: 'GilroySemiBold',fontSize:13,color:'#ffff'}}>News of the Day</Text>
           </View>
 
-          <Text style={{fontFamily: 'GilroyBold',fontSize:25,color:'#ffff',marginLeft: 40,marginTop:20,marginRight:20}}>'V.I.P Immunization' for the Powerful and Their Cronies Rattles South America</Text>
+          <Text style={{fontFamily: 'GilroyBold',fontSize:25,color:'#ffff',marginLeft: 40,marginTop:20,marginRight:20}}>As simulações de ataque da China a Taiwan que deixam mundo em alerta</Text>
           
-          <TouchableOpacity style={{marginLeft: 40,marginTop:20}}>
+          <TouchableOpacity style={{marginLeft: 40,marginTop:20}} onPress={() => Linking.openURL('https://g1.globo.com/mundo/noticia/2023/04/09/as-simulacoes-de-ataque-da-china-a-taiwan-que-deixam-mundo-em-alerta.ghtml')}>
             <Text style={{fontFamily: 'GilroyBold',fontSize:15,color:'#ffff'}}>Learn More</Text>
           </TouchableOpacity>
-          
-          <View style={{flexDirection:'row'}}>
-            <Text style={{fontFamily: 'GilroyBold',fontSize:25,color:'black', marginTop:80, marginLeft:40}}>Breaking News</Text>
-            <TouchableOpacity style={{marginLeft: 100,marginTop:85}}>
+        </View>
+        <View style={{flexDirection:'row'}}>
+            <Text style={{fontFamily: 'GilroyBold',fontSize:25,color:'black', marginTop:40, marginLeft:40}}>Breaking News</Text>
+            <TouchableOpacity style={{marginLeft: 100,marginTop:45}}>
               <Text style={{fontFamily: 'GilroyBold',fontSize:20,color:'black'}}>More</Text>
             </TouchableOpacity>
           </View>
-          
-        </View>
-    </View>
+            <ItemNews/>
+    </ScrollView>
   );
 }

@@ -18,8 +18,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
+import { useRoute } from '@react-navigation/native';
 
 export function Chatroom({navigation}){
+    const route = useRoute();
+    const {name, image} = route.params
+
     const [loaded] = useFonts({
         GilroyBold: require('../../assets/fonts/Gilroy-Bold.ttf'),
         GilroyLight: require('../../assets/fonts/Gilroy-Light.otf'),
@@ -40,13 +44,13 @@ export function Chatroom({navigation}){
             </TouchableOpacity>
 
             <TouchableOpacity>
-                <Image source={avatar} style={{height: 64, width: 64, borderRadius: 20, marginLeft: 20}}/>
+                <Image source={image} style={{height: 64, width: 64, borderRadius: 20, marginLeft: 20}}/>
             </TouchableOpacity>
             
-            <Text style={{marginLeft: 25, fontFamily: 'GilroyBold', fontSize: 20, color:'black', marginTop: 10}}>Teste</Text>
-            <Text style={{marginTop: 40, marginLeft: -55, color: '#2675EC', fontFamily: 'GilroySemiBold', fontSize: 16}}>Online</Text>
+            <Text style={{marginLeft: 25, fontFamily: 'GilroyBold', fontSize: 20, color:'black', marginTop: 10}}>{name}</Text>
+            <Text style={{marginTop: 40, left: 120, color: '#2675EC', fontFamily: 'GilroySemiBold', fontSize: 16, position:'absolute'}}>Online</Text>
             <TouchableOpacity>
-                <Image source={profile_menu} style={{ marginLeft: 180, marginTop: 20}}/>
+                <Image source={profile_menu} style={{ left: 140, marginTop: 20, position:'absolute'}}/>
             </TouchableOpacity>
         </View>
         <ScrollView >

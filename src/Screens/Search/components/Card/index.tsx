@@ -21,7 +21,7 @@ export function Card(){
         <TouchableOpacity
             style={{
                 marginTop: 18,
-                width: 145,
+                width: 165,
                 paddingVertical: 24,
                 paddingHorizontal: 24,
                 marginLeft: index == 0 ? 1 : 0,
@@ -37,7 +37,7 @@ export function Card(){
         >
             <View style={{flexDirection: 'row',}}>
                 <View style={{marginLeft: 25, alignItems: 'center', justifyContent:'center', marginTop:10}}>
-                    <MaterialCommunityIcons name={item.icon} size={19} color="black" style={{marginLeft: -90, marginTop:-18}}/>
+                    <MaterialCommunityIcons name={item.icon} size={19} color="black" style={{marginLeft: -100, marginTop:-18}}/>
                    <Text style={{ fontSize: 15, color: 'black', fontFamily: 'GilroyBold', marginTop: -18}}>{item.name}</Text>
                 </View>
             </View>

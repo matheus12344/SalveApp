@@ -10,9 +10,10 @@ import { ForYou } from "../Screens/ForYou";
 import { Search } from "../Screens/Search";
 import { Store } from "../Screens/Store";
 import { ItemDetails } from "../Screens/ItemDetails";
-import { News, Users } from "../Screens/News";
+import { News} from "../Screens/News";
 import { PlaylistRoom } from "../Screens/PlaylistRoom";
-import { Settings } from "../Screens/Settings";
+import { SalvePay } from "../Screens/SalvePay";
+import { NewsDetails } from "../Screens/NewsDetails";
 
 
 
@@ -31,6 +32,8 @@ const LoginNavigator = () => {
       }}
     >
       <Stack.Screen name="login" component={Login} />
+     
+
     </Stack.Navigator>
   )
   }
@@ -58,9 +61,9 @@ const MainStackNavigator = () => {
       <Stack.Screen name="Store" component={Store} />
       <Stack.Screen name="ItemDetails" component={ItemDetails} />
       <Stack.Screen name="Sports" component={Sports} />
-      <Stack.Screen name="Users" component={News} />
+      <Stack.Screen name="News" component={News} />
       <Stack.Screen name="PlaylistRoom" component={PlaylistRoom} />
-      <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="SalvePay" component={SalvePay} />
     </Stack.Navigator>
   );
 }

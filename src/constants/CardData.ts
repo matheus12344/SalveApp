@@ -26,6 +26,13 @@ export const CardData = [
         name: "News",
         color: "#FFFFFF",
         icon: "account-box-multiple-outline",
-        url: 'Users'
+        url: 'News'
+    },
+    {
+        id: "5",
+        name: "Salve Pay",
+        color: "#FFFFFF",
+        icon: "piggy-bank-outline",
+        url: 'SalvePay'
     },
 ]

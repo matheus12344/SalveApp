@@ -85,3 +85,37 @@ export const ItensStore = [
         width:  100
     },
 ]
+
+export const CategoryNews = [
+    {
+        id: '1',
+        name: 'Para Você',
+        color: 'black'
+    },
+    {
+        id: '2',
+        name: 'Negócios',
+        color: 'gray'
+    },
+    {
+        id: '3',
+        name: 'Esportes',
+        color: 'gray'
+    },
+    {
+        id: '4',
+        name: 'Política',
+        color: 'gray'
+    },
+    {
+        id: '5',
+        name: 'Tecnologia',
+        color: 'gray'
+    },
+    {
+        id: '6',
+        name: 'Saúde',
+        color: 'gray',
+        
+    },
+]

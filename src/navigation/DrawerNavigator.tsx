@@ -9,7 +9,7 @@ import { View, Image } from "react-native";
 import { Profile } from "../components/Profile";
 import { DrawerContent } from "../Screens/drawerContent";
 import { calls } from "../Screens/calls";
-import { Settings } from "../Screens/Settings";
+import { Settings } from "../Screens/SalvePay";
 
 const Drawer = createDrawerNavigator();
 

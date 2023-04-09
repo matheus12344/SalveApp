@@ -7,7 +7,7 @@ const ProgressBar = () => {
   return (
     <View style={styles.container}>
  
-      <View style={styles.progressBG}>
+      <TouchableOpacity style={styles.progressBG}>
         <View
           style={[
             styles.progress,
@@ -16,14 +16,12 @@ const ProgressBar = () => {
             },
           ]}
         />
-      </View>
+      </TouchableOpacity>
 
     </View>
   );
 };
- 
-export default ProgressBar;
- 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -48,3 +46,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 });
+ 
+export default ProgressBar;
+ 
