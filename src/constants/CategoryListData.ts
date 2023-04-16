@@ -42,7 +42,8 @@ export const ItensStore = [
         image: sofa,
         price: '$399,00',
         height: 200,
-        width: 100
+        width: 100,
+        description: 'The Sofa is made of comfortable and best quality Fabrics/Artificial Leather. Best quality Super Soft Foam. Frame & Floor Touch Material: Solid Mahogany Wood and Best quality Plywood.'
     },
     {
         id: '2',
@@ -50,7 +51,8 @@ export const ItensStore = [
         image: lamp,
         price: '$299,00',
         height: 200,
-        width: 100
+        width: 100,
+        description: 'A desk lamp is a small electric light designed to sit on a table or desk and provide directed light for reading or working. It typically consists of a bulb, a shade to direct the light, and a base to hold the lamp upright. Some desk lamps also have adjustable arms or shades to allow for customized positioning of the light.'
     },
     {
         id: '3',
@@ -58,7 +60,8 @@ export const ItensStore = [
         image: mesa,
         price: '$299,00',
         height: 300,
-        width:  100
+        width:  100,
+        description: 'A modern table typically features clean lines, minimalist design, and a focus on functionality. It may be made of materials such as metal, glass, or wood, often with a high-gloss finish. Some modern tables incorporate innovative technology, such as built-in charging ports or touch controls. Overall, a modern table is sleek, stylish, and well-suited for contemporary interiors.'
     },
     {
         id: '4',
@@ -66,7 +69,8 @@ export const ItensStore = [
         image: mesa,
         price: '$299,00',
         height: 300,
-        width:  100
+        width:  100,
+        description: 'The Sofa is made of comfortable and best quality Fabrics/Artificial Leather. Best quality Super Soft Foam. Frame & Floor Touch Material: Solid Mahogany Wood and Best quality Plywood.'
     },
     {
         id: '5',
@@ -74,7 +78,8 @@ export const ItensStore = [
         image: mesa,
         price: '$299,00',
         height: 300,
-        width:  100
+        width:  100,
+        description: 'The Sofa is made of comfortable and best quality Fabrics/Artificial Leather. Best quality Super Soft Foam. Frame & Floor Touch Material: Solid Mahogany Wood and Best quality Plywood.'
     },
     {
         id: '6',
@@ -82,7 +87,8 @@ export const ItensStore = [
         image: mesa,
         price: '$299,00',
         height: 300,
-        width:  100
+        width:  100,
+        description: 'The Sofa is made of comfortable and best quality Fabrics/Artificial Leather. Best quality Super Soft Foam. Frame & Floor Touch Material: Solid Mahogany Wood and Best quality Plywood.'
     },
 ]
 

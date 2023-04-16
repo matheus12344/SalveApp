@@ -36,7 +36,12 @@ export function ItemStore(){
                 justifyContent: 'center',
                 marginEnd: 25
             }}
-            onPress={() => navigation.navigate('ItemDetails')}
+            onPress={() => navigation.navigate('ItemDetails', {
+              name: item.name,
+              price: item.price,
+              image: item.image,
+              description: item.description
+            })}
         >
             <View style={{flexDirection: 'row',}}>
                 <View>     

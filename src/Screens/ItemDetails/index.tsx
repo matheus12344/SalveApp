@@ -10,10 +10,14 @@ import {
 } from 'react-native';
 import { width } from 'styled-system';
 import sofa from '../../assets/sofa.png'
+import back from '../../assets/Icons/back.png'
 
 import { styles } from './styles';
+import { useRoute } from '@react-navigation/native';
 
-export function ItemDetails(){
+export function ItemDetails({navigation}){
+    const route = useRoute()
+    const {name, price, image, description} = route.params
     const [loaded] = useFonts({
         GilroyBold: require('../../assets/fonts/Gilroy-Bold.ttf'),
         GilroyLight: require('../../assets/fonts/Gilroy-Light.otf'),
@@ -26,11 +30,14 @@ export function ItemDetails(){
       }
   return (
     <View>
-        <Image source={sofa} style={{width: 400, height: 300}}/>
+        <Image source={image} style={{width: '100%', height: 300}}/>
+        <TouchableOpacity onPress={() => navigation.navigate('Store')} style={{position:'absolute', height: 50, width: 50, backgroundColor:'white', alignItems:'center', justifyContent:'center', borderRadius: 10, top: 10, left: 10}}>
+                <Image source={back}/>
+        </TouchableOpacity>
         <View style={{backgroundColor: '#2675EC', width:420, height:500, borderTopRightRadius: 30, borderTopLeftRadius: 30, marginLeft:-4}}>
             <View style={{marginLeft: 10, marginTop:20}}>
-                <Text style={{fontFamily:'GilroyBold', color: 'white', fontSize:25}}>Wooden Sofa</Text>
-                <Text style={{fontFamily:'GilroyBold', color: 'black', fontSize:20}}>R$ 500,00</Text>
+                <Text style={{fontFamily:'GilroyBold', color: 'white', fontSize:25}}>{name}</Text>
+                <Text style={{fontFamily:'GilroyBold', color: 'black', fontSize:20}}>{price}</Text>
             </View>
             <View style={{marginLeft: 10, marginTop:30}}>
                 <Text style={{fontFamily:'GilroySemiBold', color: 'white', fontSize:20}}>Color</Text>
@@ -46,11 +53,11 @@ export function ItemDetails(){
                 <Text style={{fontFamily:'GilroyBold', color: 'white', fontSize:20, marginLeft:45}}>Especifiações</Text>
             </View>
             <View style={{width: '95%', marginLeft:15, marginTop: 10}}>
-                <Text>The Sofa is made of comfortable and best quality Fabrics/Artificial Leather. Best quality Super Soft Foam. Frame & Floor Touch Material: Solid Mahogany Wood and Best quality Plywood.</Text>
+                <Text style={{fontFamily:'GilroyRegular', fontSize:15}}>{description}</Text>
             </View>
 
             <View>
-                <View style={{flexDirection:'row'}}> 
+                <View style={{flexDirection:'row', top: -35}}> 
                     <TouchableOpacity style={{backgroundColor: 'white', width:50, height: 60, alignItems:'center', justifyContent: 'center', borderTopLeftRadius: 20, borderBottomLeftRadius:20, marginTop: 60,marginLeft: 10,borderColor: 'black', borderWidth:1}}>
                             <Text style={{fontFamily:'GilroyBold', color: 'black', fontSize:20}}>-</Text>
                     </TouchableOpacity>

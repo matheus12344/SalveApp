@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     Text,
-  View, Image, SafeAreaView, TouchableOpacity, TextInput, ScrollView
+  View, Image, SafeAreaView, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Platform, Animated, Keyboard
 } from 'react-native';
 
-import { styles } from './styles';
-import avatar from '../../assets/avatar.png'
 import back from '../../assets/Icons/back.png'
 import profile_menu from '../../assets/Icons/Profile_menu.png'
-import photoChat from '../../assets/photoChat.png'
 
 import { useFonts } from 'expo-font';
 
@@ -17,12 +14,51 @@ import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/core';
 import { useRoute } from '@react-navigation/native';
+
 
 export function Chatroom({navigation}){
     const route = useRoute();
     const {name, image} = route.params
+    const [messages, setMessages] = useState([]);
+    const [messageText, setMessageText] = useState('');
+    const [animatedValue, setAnimatedValue] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardDidShow', keyboardDidShow);
+    Keyboard.addListener('keyboardDidHide', keyboardDidHide);
+
+    return () => {
+      Keyboard.removeListener('keyboardDidShow', keyboardDidShow);
+      Keyboard.removeListener('keyboardDidHide', keyboardDidHide);
+    };
+  }, []);
+
+  const keyboardDidShow = () => {
+    Animated.timing(animatedValue, {
+      toValue: -325 , // Altere o valor de acordo com a altura que você quiser subir
+      duration: 250,
+      useNativeDriver: false,
+    }).start();
+  };
+
+  const keyboardDidHide = () => {
+    Animated.timing(animatedValue, {
+      toValue: 0,
+      duration: 250,
+      useNativeDriver: false,
+    }).start();
+  };
+
+  const animatedStyle = {
+    transform: [{ translateY: animatedValue }],
+  };
+    function handleSendMessage() {
+        if (messageText) {
+          setMessages([...messages, messageText]);
+          setMessageText('');
+        }
+      }
 
     const [loaded] = useFonts({
         GilroyBold: require('../../assets/fonts/Gilroy-Bold.ttf'),
@@ -53,165 +89,42 @@ export function Chatroom({navigation}){
                 <Image source={profile_menu} style={{ left: 140, marginTop: 20, position:'absolute'}}/>
             </TouchableOpacity>
         </View>
-        <ScrollView >
-            <View style={{
-                backgroundColor: '#2675EC', 
-                width: 90, 
-                height: 50, 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: 10,
-                marginTop: 50, 
-                borderTopLeftRadius: 15, 
-                borderTopRightRadius: 15, 
-                borderBottomRightRadius: 15, 
-                borderBottomLeftRadius: 5
-                }}>
-                <Text style={{color: 'white', fontFamily: 'GilroySemiBold', fontSize: 15}}>Oi</Text>
-            </View>
 
-            <View style={{
-                backgroundColor: '#E3DFDF', 
-                width: 90,
-                height: 50, 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: 300,
-                borderTopLeftRadius: 15, 
-                borderTopRightRadius: 15, 
-                borderBottomRightRadius: 5, 
-                borderBottomLeftRadius: 15
-                }}>
-                <Text style={{fontFamily: 'GilroySemiBold', fontSize: 15}}>Oie</Text>
+        <ScrollView keyboardShouldPersistTaps='always'>
+         
+            {messages.map((message, index) => (
+            <View key={index} style={{backgroundColor: '#2675EC', width: 100, height: 50, borderRadius: 20, alignItems: 'center', justifyContent:'center', marginTop: 20, left:300 }}>
+                <Text style={{fontFamily: 'GilroySemiBold', color: 'white'}}>{message}</Text>
             </View>
-
-            <View style={{
-                backgroundColor: '#2675EC', 
-                width: 180, 
-                height: 350, 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: 10,
-                marginTop: 50, 
-                borderTopLeftRadius: 20, 
-                borderTopRightRadius: 30, 
-                borderBottomRightRadius: 30, 
-                borderBottomLeftRadius: 10
-                }}>
-                <Image source={photoChat} style={{width: 180, height: 350, borderTopLeftRadius: 20, 
-                borderTopRightRadius: 30, 
-                borderBottomRightRadius: 30, 
-                borderBottomLeftRadius: 5}}/>
-            </View>
-
-            <View style={{
-                backgroundColor: '#2675EC', 
-                width: 90, 
-                height: 50, 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: 10,
-                marginTop: 50, 
-                borderTopLeftRadius: 15, 
-                borderTopRightRadius: 15, 
-                borderBottomRightRadius: 15, 
-                borderBottomLeftRadius: 5
-                }}>
-                <Text style={{color: 'white', fontFamily: 'GilroySemiBold', fontSize: 15}}>Oi</Text>
-            </View>
-
-            <View style={{
-                backgroundColor: '#E3DFDF', 
-                width: 90,
-                height: 50, 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: 300,
-                borderTopLeftRadius: 15, 
-                borderTopRightRadius: 15, 
-                borderBottomRightRadius: 5, 
-                borderBottomLeftRadius: 15
-                }}>
-                <Text style={{fontFamily: 'GilroySemiBold', fontSize: 15}}>Oie</Text>
-            </View>
-
-            <View style={{
-                backgroundColor: '#2675EC', 
-                width: 90, 
-                height: 50, 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: 10,
-                marginTop: 50, 
-                borderTopLeftRadius: 15, 
-                borderTopRightRadius: 15, 
-                borderBottomRightRadius: 15, 
-                borderBottomLeftRadius: 5
-                }}>
-                <Text style={{color: 'white', fontFamily: 'GilroySemiBold', fontSize: 15}}>Oi</Text>
-            </View>
-
-            <View style={{
-                backgroundColor: '#E3DFDF', 
-                width: 90,
-                height: 50, 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: 300,
-                borderTopLeftRadius: 15, 
-                borderTopRightRadius: 15, 
-                borderBottomRightRadius: 5, 
-                borderBottomLeftRadius: 15
-                }}>
-                <Text style={{fontFamily: 'GilroySemiBold', fontSize: 15}}>Oie</Text>
-            </View>
-
-            <View style={{
-                backgroundColor: '#2675EC', 
-                width: 90, 
-                height: 50, 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: 10,
-                marginTop: 50, 
-                borderTopLeftRadius: 15, 
-                borderTopRightRadius: 15, 
-                borderBottomRightRadius: 15, 
-                borderBottomLeftRadius: 5
-                }}>
-                <Text style={{color: 'white', fontFamily: 'GilroySemiBold', fontSize: 15}}>Oi</Text>
-            </View>
-
-            <View style={{
-                backgroundColor: '#E3DFDF', 
-                width: 90,
-                height: 50, 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: 300,
-                borderTopLeftRadius: 15, 
-                borderTopRightRadius: 15, 
-                borderBottomRightRadius: 5, 
-                borderBottomLeftRadius: 15
-                }}>
-                <Text style={{fontFamily: 'GilroySemiBold', fontSize: 15}}>Oie</Text>
-            </View>
-
+            ))}
+             
         </ScrollView>
-
-        <View style={{backgroundColor: '#FAFAFA', flexDirection: 'row', width: "90%", height: 70, borderRadius: 30, marginLeft: 25, marginTop: 700, position: 'absolute'}}>
-            <TextInput placeholder="Type your message..." placeholderTextColor="#848484" style={{marginLeft: 10, color: '#848484', fontFamily: 'GilroyBold'}}/>
-            <TouchableOpacity >
-                <Entypo name="plus" size={30} color="#2675EC" style={{marginLeft: 30, marginTop: 20}}/>
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <MaterialIcons name="emoji-emotions" size={30} color="#2675EC" style={{marginLeft: 20, marginTop: 20}}/>
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <MaterialCommunityIcons name="camera" size={30} color="#2675EC" style={{marginLeft: 20, marginTop: 20}} onPress={() => navigation.navigate('Camera')}/>
-            </TouchableOpacity>
-           
-        </View>
+        <Animated.View style={[{ backgroundColor: '#FAFAFA', flexDirection: 'row', width: "90%", height: 70,top:690, borderRadius: 30, marginLeft: 20, justifyContent: 'flex-end',position: 'absolute' }, animatedStyle]}>
+                <View>
+                    <TextInput 
+                        placeholder="Type your message..." 
+                        placeholderTextColor="#848484" 
+                        style={{flex:1, marginLeft: 10, color: '#848484', fontFamily: 'GilroyBold'}}
+                        onChangeText={(text) => setMessageText(text)}
+                        value={messageText}
+                    />
+                </View>
+                    <TouchableOpacity>
+                        <Entypo name="plus" size={30} color="#2675EC" style={{marginLeft: 30, marginTop: 20}}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity >
+                        <MaterialIcons name="emoji-emotions" size={30} color="#2675EC" style={{marginLeft: 20, marginTop: 20}}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity >
+                        <MaterialCommunityIcons name="camera" size={30} color="#2675EC" style={{marginLeft: 20, marginTop: 20}} onPress={() => navigation.navigate('Camera')}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{width:50, height:50, borderRadius:30, alignItems:'center', justifyContent:'center',backgroundColor:'#2675EC', left: 15, top: 9}} onPress={handleSendMessage}>
+                        <Ionicons name="send" size={28} color="white" />
+                    </TouchableOpacity>
+       </Animated.View>           
+       
+          
+        
     </SafeAreaView>
   );
 }
