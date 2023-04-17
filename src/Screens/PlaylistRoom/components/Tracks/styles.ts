@@ -36,5 +36,31 @@ export const styles = StyleSheet.create({
     lineHeight: 19,
     letterSpacing: -0.165
   },
- 
+  notification: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center', 
+    maxHeight: 26,
+    maxWidth: 26,
+    marginLeft: 265,
+    borderRadius: 30,
+    justifyContent: 'center',
+    marginTop: -20,
+  },
+  viewMessage: {
+    alignItems: 'center', 
+    marginLeft: 265,
+    borderRadius: 30,
+    justifyContent: 'center',
+    marginTop: -10,
+  },
+  hour:{
+    alignItems: 'center', 
+    marginLeft: 340,
+    borderRadius: 30,
+    justifyContent: 'center',
+    marginTop: -30,
+  
+  }
+  
+
 });

@@ -33,7 +33,10 @@ export function Playlist(){
                 justifyContent: 'center',
                 marginEnd: 25
             }}
-            onPress={() => navigation.navigate('PlaylistRoom')}
+            onPress={() => navigation.navigate('PlaylistRoom', {
+                name: item.name,
+                image: item.image
+            })}
         >
             <View style={{flexDirection: 'row',}}>
                 <View style={{marginLeft: 1, justifyContent: 'center', alignItems: 'center'}}>

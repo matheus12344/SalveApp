@@ -6,5 +6,6 @@ export const styles = StyleSheet.create({
         fontSize: 25,
         color: theme.colors.blue,
         marginLeft: 20,
+        paddingTop: 10
     }
 });

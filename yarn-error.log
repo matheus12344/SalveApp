@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Windows 10\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/react@~18.0.0
+  C:\Program Files\nodejs\node.exe C:\Users\Windows 10\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo@^48.0.0
 
 PATH: 
-  E:\PERFIL\Windows 10\Dev\HelloApp\node_modules\.bin;E:\PERFIL\Windows 10\Dev\HelloApp\node_modules\.bin;E:\PERFIL\Windows 10\Dev\node_modules\.bin;E:\PERFIL\Windows 10\node_modules\.bin;E:\PERFIL\node_modules\.bin;E:\node_modules\.bin;C:\Users\Windows 10\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\run-script\lib\node-gyp-bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Users\Windows 10\Dev\flutter\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\Windows 10\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\Windows 10\AppData\Local\Programs\Python\Python39\;C:\Users\Windows 10\AppData\Local\Microsoft\WindowsApps;C:\Users\Windows 10\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Windows 10\AppData\Roaming\npm;C:\Users\Windows 10\Dev\flutter\bin;C:\Users\Windows 10\.dotnet\tools
+  E:\PERFIL\Windows 10\Dev\HelloApp\node_modules\.bin;C:\Python311\Scripts\;C:\Python311\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Windows 10\Dev\flutter\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;C:\Users\Windows 10\AppData\Local\pnpm;C:\Users\Windows 10\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\Windows 10\AppData\Local\Programs\Python\Python39\;C:\Users\Windows 10\AppData\Local\Microsoft\WindowsApps;C:\Users\Windows 10\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Windows 10\Dev\flutter\bin;C:\Users\Windows 10\.dotnet\tools;C:\Users\Windows 10\AppData\Roaming\npm
 
 Yarn version: 
   1.22.10
@@ -89,7 +89,20 @@ npm manifest:
       "@types/react-native": "~0.69.1",
       "typescript": "^4.6.3"
     },
-    "private": true
+    "private": true,
+    "name": "helloapp",
+    "description": "Versão 1.6.0",
+    "version": "1.7.0",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/matheus12344/HelloApp.git"
+    },
+    "author": "skytreft",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/matheus12344/HelloApp/issues"
+    },
+    "homepage": "https://github.com/matheus12344/HelloApp#readme"
   }
 
 yarn manifest: 

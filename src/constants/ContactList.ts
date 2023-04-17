@@ -89,12 +89,5 @@ export const Users = [
         profile: avatarHenrique
     },
 
-    {
-        id: '11',
-        name: '',
-        lastMessage: '',
-        hour: '',
-        notification: '',
-        profile: ''
-    }
+   
 ]

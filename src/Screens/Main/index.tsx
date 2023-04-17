@@ -28,6 +28,7 @@ export function Main(){
           </View>
           <View style={{backgroundColor: '#FFFFFF'}}>
           <Contact/>
+          <View style={{height:100, width:'100%'}}/>
           </View>
         </>
       )}

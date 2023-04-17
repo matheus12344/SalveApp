@@ -6,10 +6,12 @@ import {
 } from 'react-native';
 
 
+import avatar from '../../../../assets/avatar.png'
 import { theme } from '../../../../global/styles/theme';
 import { styles } from './styles';
 import { songs } from '../../../../constants/Model/Data';
 import { useNavigation } from '@react-navigation/core';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 
@@ -18,14 +20,24 @@ export function Tracks(){
     const [trending, setTrending] = useState(songs)
     const renderItem = ({item, index}) => (
         <View>
-            <TouchableOpacity style={{backgroundColor: 'white', borderRadius: 10}} onPress={() => false}>
+            <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('MusicRoom', {
+                title: item.title,
+                artists: item.artists,
+                image: item.image
+            })}>
                     <View>
-                        <Image source={item.profile} style={styles.avatar}/>
+                        <Image source={item.image} style={styles.avatar}/>
                         <View style={styles.name}>
-                            <Text style={{ fontSize: 18, color: 'white', fontFamily: 'GilroyBold' }}>{item.name}</Text>  
+                            <Text style={{ fontSize: 18, color: 'black', fontFamily: 'GilroyBold' }}>{item.title}</Text>  
+                        </View>
+                        <View style={styles.hour}>
+                            <Text style={{fontFamily: 'GilroyRegular', fontSize: 15, color: '#848484'}}>{item.hour}</Text>
                         </View>
                         <View style={styles.message}>
-                            <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color:'white'}}>{item.artist}</Text>
+                            <Text style={{ fontFamily: 'GilroyLight', fontSize: 16, color: theme.colors.blue}}>{item.artists}</Text>
+                            <View style={styles.notification}>
+                                <FontAwesome name="heart" size={24} color="#2675EC" />
+                            </View>
                         </View>
                     </View>
             </TouchableOpacity>
