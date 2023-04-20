@@ -29,6 +29,7 @@ export function Contact(){
     const renderItem = ({item, index}) => (
         <View>
             <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('Chatroom', {
+                Contactid: item.id,
                 name: item.name,
                 image: item.profile
             })}>

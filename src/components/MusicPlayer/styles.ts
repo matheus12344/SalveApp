@@ -4,26 +4,28 @@ export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     height: 60, 
-    width: '100%',
+    width: '95%',
     backgroundColor: '#2675EC',
     borderRadius: 30,
     position: 'absolute',
     marginTop: 700,
+    alignSelf:'center'
   },
   savebutton: {
     marginTop: 15,
-    marginLeft: 20,
+    marginLeft: 30,
   },
   playButton: {
     marginTop: 15,
-    marginLeft: 75
+    marginLeft: 70
   },
   Music: {
     marginTop: 15,
-    marginLeft: 90,
+    marginLeft: 55,
     fontFamily: 'GilroyBold',
     fontSize: 20,
     color: "white",
+    textAlign:'center'
   },
   divide: {
     marginTop: 1,

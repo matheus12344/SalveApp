@@ -2,35 +2,66 @@ import React, { useEffect, useState } from 'react';
 
 import {
     Text,
-  View, Image, SafeAreaView, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Platform, Animated, Keyboard
-} from 'react-native';
+  View, Image, SafeAreaView, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Platform, Animated, Keyboard, ActivityIndicator
+} from 'react-native';  // base para tudo funcionar
 
-import back from '../../assets/Icons/back.png'
-import profile_menu from '../../assets/Icons/Profile_menu.png'
 
-import { useFonts } from 'expo-font';
+
+import { useFonts } from 'expo-font'; // fontes
 
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; // importação de icones
 import { useRoute } from '@react-navigation/native';
+import back from '../../assets/Icons/back.png'
+import profile_menu from '../../assets/Icons/Profile_menu.png'
 
 
-export function Chatroom({navigation}){
+import * as Crypto from 'expo-crypto';
+import * as FileSystem from 'expo-file-system'; //criptografia de mensagens
+import firebase from 'firebase/compat/app';
+import { getDatabase, ref, set, get, remove, update } from "firebase/database";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCuIrezy8C6u6lbAlzGSloNg0olc5U2uYk",
+  authDomain: "salveapp-84ee8.firebaseapp.com",
+  databaseURL: "https://salveapp-84ee8-default-rtdb.firebaseio.com",
+  projectId: "salveapp-84ee8",
+  storageBucket: "salveapp-84ee8.appspot.com",
+  messagingSenderId: "428314438319",
+  appId: "1:428314438319:web:339ff1671aa5de98ae825a",
+  measurementId: "G-8TRNX4W8SB"
+};
+
+if (!firebase.apps.length){
+  firebase.initializeApp(firebaseConfig)
+}
+
+type Message = { text: string; createdAt: Date };
+
+type ChatroomProps = {
+  navigation: any;
+};
+
+
+export function Chatroom({navigation}: ChatroomProps){
     const route = useRoute();
-    const {name, image} = route.params
-    const [messages, setMessages] = useState([]);
+    const {name, image, Contactid} = route.params // rotas
+    const [messages, setMessages] = useState([]); 
     const [messageText, setMessageText] = useState('');
-    const [animatedValue, setAnimatedValue] = useState(new Animated.Value(0));
+    const [animatedValue, setAnimatedValue] = useState(new Animated.Value(0));// variaveis de estado
+    const [messageCount, setMessageCount] = useState(0);
+    
+    const database = getDatabase(); // Chamando o Firebase para a operação
 
   useEffect(() => {
-    Keyboard.addListener('keyboardDidShow', keyboardDidShow);
-    Keyboard.addListener('keyboardDidHide', keyboardDidHide);
+   const addlistener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
+   const addlistenerhide =Keyboard.addListener('keyboardDidHide', keyboardDidHide);
 
     return () => {
-      Keyboard.removeListener('keyboardDidShow', keyboardDidShow);
-      Keyboard.removeListener('keyboardDidHide', keyboardDidHide);
+      addlistener.remove()
+      addlistenerhide.remove()
     };
   }, []);
 
@@ -53,13 +84,73 @@ export function Chatroom({navigation}){
   const animatedStyle = {
     transform: [{ translateY: animatedValue }],
   };
-    function handleSendMessage() {
-        if (messageText) {
-          setMessages([...messages, messageText]);
-          setMessageText('');
+
+  async function saveMessageToFirebase(message: Message) {
+    try {
+      await set(ref(database, `messages/${Contactid}/${message.id}`), message);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+
+  
+  async function loadMessagesFromFirebase(): Promise<Message[]> {
+    try {
+      const snapshot = await get(ref(database, `messages/${Contactid}`));
+      const messages = [];
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        for (const messageId in data) {
+          const message = data[messageId];
+          messages.push({ ...message, id: messageId });
         }
       }
+      console.log(messages);
+      return messages;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  }
+  
+  async function deleteMessagesFromFirebase() {
+    try {
+      await remove(ref(database, `messages/${Contactid}`));
+      console.log(`Mensagens do contato ${Contactid} apagadas com sucesso!`);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
+  async function handleSendMessage() {
+    if (messageText) {
+      const newCount = messageCount + 1;
+      const newMessage = { id: `${newCount}_${Contactid}`, text: messageText, createdAt: new Date() };
+      const newMessages = [...messages, newMessage];
+      setMessages(newMessages);
+      setMessageText('');
+      await saveMessageToFirebase(newMessage);
+      setMessageCount(newCount);
+    }
+  }
+  
+
+  useEffect(() => {
+    async function loadMessages() {
+      try {
+        const loadedMessages = await loadMessagesFromFirebase(setMessages);
+        console.log('loaded messages:', loadedMessages); // adiciona esta linha
+        if (loadedMessages) {
+          setMessages(loadedMessages);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    loadMessages();
+  }, []);
+  
     const [loaded] = useFonts({
         GilroyBold: require('../../assets/fonts/Gilroy-Bold.ttf'),
         GilroyLight: require('../../assets/fonts/Gilroy-Light.otf'),
@@ -89,16 +180,19 @@ export function Chatroom({navigation}){
                 <Image source={profile_menu} style={{ left: 140, marginTop: 20, position:'absolute'}}/>
             </TouchableOpacity>
         </View>
-
+        {messages === null ? (
+          <ActivityIndicator />
+        ) : (
         <ScrollView keyboardShouldPersistTaps='always'>
          
             {messages.map((message, index) => (
             <View key={index} style={{backgroundColor: '#2675EC', width: 100, height: 50, borderRadius: 20, alignItems: 'center', justifyContent:'center', marginTop: 20, left:300 }}>
-                <Text style={{fontFamily: 'GilroySemiBold', color: 'white'}}>{message}</Text>
+                <Text style={{fontFamily: 'GilroySemiBold', color: 'white'}}>{message.text}</Text>
             </View>
             ))}
              
         </ScrollView>
+        )}
         <Animated.View style={[{ backgroundColor: '#FAFAFA', flexDirection: 'row', width: "90%", height: 70,top:690, borderRadius: 30, marginLeft: 20, justifyContent: 'flex-end',position: 'absolute' }, animatedStyle]}>
                 <View>
                     <TextInput 
@@ -109,8 +203,8 @@ export function Chatroom({navigation}){
                         value={messageText}
                     />
                 </View>
-                    <TouchableOpacity>
-                        <Entypo name="plus" size={30} color="#2675EC" style={{marginLeft: 30, marginTop: 20}}/>
+                    <TouchableOpacity onPress={deleteMessagesFromFirebase}>
+                        <Entypo name="plus" size={30} color="#2675EC" style={{marginLeft: 30, marginTop: 20}}/> 
                     </TouchableOpacity>
                     <TouchableOpacity >
                         <MaterialIcons name="emoji-emotions" size={30} color="#2675EC" style={{marginLeft: 20, marginTop: 20}}/>
