@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { justifyContent } from 'styled-system';
 import {CategoryMusicData} from '../../constants/CategoryMusicData';
 
 import { styles } from './styles';

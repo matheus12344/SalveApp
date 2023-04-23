@@ -4,7 +4,7 @@ import {
     Text,
   View, Image, SafeAreaView, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Platform, Animated, Keyboard, ActivityIndicator
 } from 'react-native';  // base para tudo funcionar
-
+import  Toast  from 'react-native-toast-message';
 
 
 import { useFonts } from 'expo-font'; // fontes
@@ -21,7 +21,8 @@ import profile_menu from '../../assets/Icons/Profile_menu.png'
 import * as Crypto from 'expo-crypto';
 import * as FileSystem from 'expo-file-system'; //criptografia de mensagens
 import firebase from 'firebase/compat/app';
-import { getDatabase, ref, set, get, remove, update } from "firebase/database";
+import { getDatabase, ref, set, get, remove, update, onChildAdded, push } from "firebase/database";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCuIrezy8C6u6lbAlzGSloNg0olc5U2uYk",
@@ -52,7 +53,8 @@ export function Chatroom({navigation}: ChatroomProps){
     const [messageText, setMessageText] = useState('');
     const [animatedValue, setAnimatedValue] = useState(new Animated.Value(0));// variaveis de estado
     const [messageCount, setMessageCount] = useState(0);
-    
+    const [loading, setLoading] = useState(true);
+
     const database = getDatabase(); // Chamando o Firebase para a operação
 
   useEffect(() => {
@@ -87,11 +89,13 @@ export function Chatroom({navigation}: ChatroomProps){
 
   async function saveMessageToFirebase(message: Message) {
     try {
-      await set(ref(database, `messages/${Contactid}/${message.id}`), message);
+      const messagesRef = ref(database, `messages/${Contactid}`);
+      await push(messagesRef, message);
     } catch (error) {
       console.log(error);
     }
   }
+  
   
 
   
@@ -106,7 +110,7 @@ export function Chatroom({navigation}: ChatroomProps){
           messages.push({ ...message, id: messageId });
         }
       }
-      console.log(messages);
+      console.log('loadedMessages', messages);
       return messages;
     } catch (error) {
       console.log(error);
@@ -114,10 +118,42 @@ export function Chatroom({navigation}: ChatroomProps){
     }
   }
   
+  async function addMessagesFromFirebase(existingMessages: Message[]): Promise<Message[]> {
+  try {
+    const snapshot = await get(ref(database, `messages/${Contactid}`));
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const updatedMessages = [...existingMessages]; // fazer uma cópia do array existente
+      for (const messageId in data) {
+        const message = data[messageId];
+        // verificar se a nova mensagem já existe no array copiado
+        if (!existingMessages.find((m) => m.id === messageId)) {
+          updatedMessages.push({ ...message, id: messageId }); // adicionar apenas se não existir
+        }
+      }
+      console.log('addedMessages', updatedMessages);
+      return updatedMessages; // retornar o array copiado com as novas mensagens adicionadas
+    }
+    return existingMessages; // se não houver mensagens novas, retornar o array existente
+  } catch (error) {
+    console.log(error);
+    return existingMessages;
+  }
+}
+  
+  
   async function deleteMessagesFromFirebase() {
     try {
       await remove(ref(database, `messages/${Contactid}`));
       console.log(`Mensagens do contato ${Contactid} apagadas com sucesso!`);
+      Toast.show({
+        type: 'success',
+        text1: 'Mensagens apagadas',
+        visibilityTime: 2000,
+        autoHide: true,
+        topOffset: 30,
+        bottomOffset: 40,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -127,7 +163,7 @@ export function Chatroom({navigation}: ChatroomProps){
     if (messageText) {
       const newCount = messageCount + 1;
       const newMessage = { id: `${newCount}_${Contactid}`, text: messageText, createdAt: new Date() };
-      const newMessages = [...messages, newMessage];
+      const newMessages = messages.concat(newMessage);;
       setMessages(newMessages);
       setMessageText('');
       await saveMessageToFirebase(newMessage);
@@ -137,19 +173,14 @@ export function Chatroom({navigation}: ChatroomProps){
   
 
   useEffect(() => {
-    async function loadMessages() {
-      try {
-        const loadedMessages = await loadMessagesFromFirebase(setMessages);
-        console.log('loaded messages:', loadedMessages); // adiciona esta linha
-        if (loadedMessages) {
-          setMessages(loadedMessages);
-        }
-      } catch (error) {
-        console.log(error);
-      }
+    async function fetchData() {
+      setLoading(true);
+      const loadedMessages = await addMessagesFromFirebase(messages);
+      setMessages(loadedMessages);
+      setLoading(false);
     }
-    loadMessages();
-  }, []);
+    fetchData();
+  }, [setLoading]);
   
     const [loaded] = useFonts({
         GilroyBold: require('../../assets/fonts/Gilroy-Bold.ttf'),

@@ -1,5 +1,6 @@
 import { useFonts } from '@expo-google-fonts/inter';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Audio } from 'expo-av';
 
 import {
     Image,

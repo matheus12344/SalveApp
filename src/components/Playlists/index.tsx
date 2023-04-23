@@ -35,7 +35,8 @@ export function Playlist(){
             }}
             onPress={() => navigation.navigate('PlaylistRoom', {
                 name: item.name,
-                image: item.image
+                image: item.image,
+                audioUri: item.music
             })}
         >
             <View style={{flexDirection: 'row',}}>
